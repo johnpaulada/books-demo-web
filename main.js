@@ -3,7 +3,7 @@ const processBooks = processResource(`${server}/books`);
 
 function addToList(data) {
   data.forEach((book) => {
-    document.querySelector('.list').append(buildCard(book));
+    document.querySelector('.list').prepend(buildCard(book));
   });
   document.querySelector('.list').append(buildPlus());
 }
@@ -21,7 +21,7 @@ function buildCard(data) {
   button.classList.add('card__button', 'card__button--danger');
 
   button.addEventListener('click', (evt) => {
-
+    // TODO: Implement this
   }, {'passive': true});
 
   title.append(data.name);
@@ -39,6 +39,12 @@ function buildCard(data) {
 function buildPlus() {
   const plus = document.createElement('div');
   const sym  = document.createElement('p');
+
+  plus.addEventListener('click', () => {
+    document.querySelector('.list').classList.add('down');
+    document.querySelector('.header').classList.add('down');
+    document.querySelector('.add-form').classList.add('down');
+  });
 
   sym.append('+');
   plus.append(sym);
@@ -65,5 +71,27 @@ function processResource(resource) {
 }
 
 window.addEventListener('load', () => {
+  document.querySelector('#adder').addEventListener('click', () => {
+    const title  = document.querySelector('input[name="title"]').value;
+    const author = document.querySelector('input[name="author"]').value;
+    const data   = new FormData();
+
+    data.append('name', title);
+    data.append('author', author);
+
+    fetch('http://localhost:8002/books', {
+      method: 'POST',
+      body: data
+    }).then((response) => {
+      response.json().then((book) => {
+        document.querySelector('.list').prepend(buildCard(book));
+      });
+      // processBooks(addToList);
+    });
+
+    document.querySelector('.list').classList.remove('down');
+    document.querySelector('.header').classList.remove('down');
+    document.querySelector('.add-form').classList.remove('down');
+  });
   processBooks(addToList);
 }, {once: true, passive: true});
