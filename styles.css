@@ -1,0 +1,129 @@
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url('fonts/helveticaneue/HelveticaNeue Thin.ttf');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url('fonts/helveticaneue/Helvetica Neu Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url('fonts/helveticaneue/HelveticaNeue BlackCond.ttf');
+  font-stretch: condensed;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  height: 50vh;
+  background: linear-gradient(to right, #D6A4A4, #DAE2F8);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #FAFAFA;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+.header__title {
+  font-weight: 100;
+  font-size: 92pt;
+}
+
+.header__subtitle {
+  margin-top: 2vh;
+  font-weight: bold;
+  font-size: 18pt;
+}
+
+.list {
+  height: 50vh;
+  background-color: #FAFAFA;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: white;
+  position: relative;
+  width: 360px;
+  height: 360px;
+  box-shadow: 0 6px 10px #CCC;
+  margin-top: 3vw;
+  margin-left: 3vw;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+.card__title {
+  font-size: 24pt;
+  font-stretch: condensed;
+  color: #555;
+  text-align: center;
+  margin-top: 70px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.card__author {
+  font-size: 14pt;
+  font-weight: 100;
+  color: #888;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.card__button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__button > p {
+  font-size: 18pt;
+  text-align: center;
+  font-stretch: condensed;
+}
+
+.card__button--danger {
+  background-color: #E53935;
+}
+
+.card__button--danger > p {
+  color: #EF9A9A;
+}
+
+.plus {
+  width: 360px;
+  height: 360px;
+  margin-top: 3vw;
+  margin-left: 3vw;
+  background-color: white;
+  border: 3px dashed #CCC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.plus > p {
+  margin-top: -75px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  font-size: 244pt;
+  color: #CCC;
+}
