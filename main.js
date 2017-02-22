@@ -2,9 +2,11 @@ const server = 'http://localhost:8002';
 const processBooks = processResource(`${server}/books`);
 
 function addToList(data) {
-  data.forEach((book) => {
-    document.querySelector('.list').prepend(buildCard(book));
-  });
+  if (Array.isArray(data)) {
+      data.forEach((book) => {
+        document.querySelector('.list').prepend(buildCard(book));
+      });
+  }
   document.querySelector('.list').append(buildPlus());
 }
 
@@ -64,7 +66,7 @@ function processResource(resource) {
   return function(process) {
     fetch(resource).then((response) => {
       response.json().then((data) => {
-        process(data);
+        process(data.books);
       });
     });
   }
